@@ -31,7 +31,7 @@ def format(session):
     """
     session.install("-r", "requirements_dev.txt")
     session.run("black", "{{cookiecutter.project_slug}}")
-    session.run("isort", "--recursive", "-y", "{{cookiecutter.project_slug}}")
+    session.run("isort", "{{cookiecutter.project_slug}}")
 
 
 @nox.session
