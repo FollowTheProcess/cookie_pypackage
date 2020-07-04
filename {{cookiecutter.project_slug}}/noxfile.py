@@ -34,7 +34,7 @@ def format(session):
     session.run("isort", "--recursive", "-y", "{{cookiecutter.project_slug}}")
 
 
-@nox.session(python="3.8")
+@nox.session
 def docs(session):
     """
     Builds project docs with sphinx.
