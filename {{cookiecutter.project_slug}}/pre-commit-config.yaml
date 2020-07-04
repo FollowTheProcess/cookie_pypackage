@@ -1,0 +1,19 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.4.0
+    hooks:
+    -   id: trailing-whitespace
+    -   id: end-of-file-fixer
+    -   id: check-yaml
+    -   id: check-added-large-files
+        args: ['--maxkb=8000']
+    -   id: check-ast
+    -   id: check-json
+    -   id: name-tests-test
+        args: ['--django']
+-   repo: https://gitlab.com/pycqa/flake8
+    rev: a7be77f761a4c29121d6bb6f61c11902281f9105
+    hooks:
+    -   id: flake8
