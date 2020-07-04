@@ -1,6 +1,6 @@
 # Cookie Pypackage
 
-![License](https://img.shields.io/github/license/FollowTheProcess/cookie_pypackage)
+![License](https://img.shields.io/github/license/FollowTheProcess/cookie_pypackage.svg)
 
 My take on the cookiecutter pypackage project template. Inspired by the [original](https://github.com/audreyr/cookiecutter-pypackage/) with some tweaks.
 
