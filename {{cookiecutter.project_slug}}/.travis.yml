@@ -1,6 +1,6 @@
 language: python
 dist: xenial
-matrix:
+jobs:
   include:
   - python: "3.6"
     env: NOXSESSION="test-3.6"
@@ -16,11 +16,12 @@ matrix:
     env: NOXSESSION="docs"
 install:
   - pip install --upgrade pip setuptools
+  - pip install -r requirements_dev.txt
   - pip install .
 script: nox --non-interactive --session "$NOXSESSION"
 deploy:
   provider: pypi
-  user: {{cookiecutter.author_pypi_username}}
+  username: {{cookiecutter.author_pypi_username}}
   password:
     secure: PLEASE_REPLACE_ME
   on:
