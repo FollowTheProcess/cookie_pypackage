@@ -5,7 +5,7 @@
     "project_short_description": "A short description of your project",
     "open_source_license": [
         "MIT license",
-        "BSD license",
+        "BSD-3-Clause",
         "ISC license",
         "Apache Software License 2.0",
         "GNU General Public License v3"

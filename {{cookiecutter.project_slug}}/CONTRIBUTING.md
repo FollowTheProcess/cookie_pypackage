@@ -104,6 +104,8 @@ Before you submit a pull request, check that it meets these guidelines:
 
 4) The pull request should work for all supported python versions. Check [https://travis-ci.com/{{cookiecutter.author_github_username}}/{{cookiecutter.project_slug}}/pull_requests](https://travis-ci.com/{{cookiecutter.author_github_username}}/{{cookiecutter.project_slug}}/pull_requests).
 
+5) Do not delete your branch until your pull request has been reviewed, any requested changes have been made and it has been successfully merged and all tests passed
+
 ### Deploying
 
 A reminder for maintainers on how to deploy. Make sure all your changes are committed (including an entry in HISTORY.md). Then run:
