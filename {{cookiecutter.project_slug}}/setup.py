@@ -35,7 +35,7 @@ setup(
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
     ],
-    packages=find_packages(where="{{cookiecutter.project_slug}}", exclude="tests/"),
+    packages=find_packages(),
     python_requires=">=3.6, <4",
     install_requires=requirements,
     license="{{cookiecutter.open_source_license}}",
