@@ -52,7 +52,7 @@ git clone https://github.com/<your_username>/{{cookiecutter.project_slug}}.git
 # Navigate to where your local clone is
 cd {{cookiecutter.project_slug}}
 
-# Create a virtualenv, called whatever you like, and activate it
+# Create a virtualenv, called whatever you like, and activate it (convention is 'venv')
 python3 -m venv ./<env_name>
 source ./<env_name>/bin/activate
 
