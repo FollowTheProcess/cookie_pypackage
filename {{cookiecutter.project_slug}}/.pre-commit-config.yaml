@@ -14,6 +14,6 @@ repos:
     -   id: name-tests-test
         args: ['--django']
 -   repo: https://gitlab.com/pycqa/flake8
-    rev: a7be77f761a4c29121d6bb6f61c11902281f9105
+    rev: a4aeb2e209c64efcfadb43cb96809c1f5b80912b
     hooks:
     -   id: flake8
