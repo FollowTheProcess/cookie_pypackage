@@ -1,30 +1,36 @@
-#!/usr/bin/env python
-
 from setuptools import setup, find_packages
-import pathlib
+from pathlib import Path
 
-here = pathlib.Path(__file__).parent.resolve()
+ROOT = Path(__file__).parent.resolve()
 
-# Read in README for long description
-with open("README.md", encoding="utf-8") as readme_file:
-    readme = readme_file.read()
 
-# Specify minimum requirements to run here
-requirements = []
+def read(path: Path, encoding: str = "utf-8") -> str:
+    """
+    Utility function to read the content of files to
+    be passed to setup arguments.
+    """
 
-# Specify setup requirements here
-setup_requirements = []
+    path = ROOT.joinpath(path)
+    with open(path, encoding=encoding) as fp:
+        return fp.read()
 
-# Specify test requirements here
-test_requirements = []
+
+def get_install_requirements(path: Path) -> list:
+    """
+    Utility function to read a requirements.txt type file.
+    """
+    content = read(path)
+    return [req for req in content.split("\n") if req != "" and not req.startswith("#")]
+
 
 setup(
     name="{{cookiecutter.project_slug}}",
     version="{{cookiecutter.project_version}}",
     description="{{cookiecutter.project_short_description}}",
-    long_description=readme,
+    long_description=read("README.md"),
     long_description_content_type="text/markdown",
     url="{{cookiecutter.project_github_url}}",
+    author="{{cookiecutter.author_name}}",
     author_email="{{cookiecutter.author_email}}",
     classifiers=[
         # Update this before release
@@ -37,11 +43,10 @@ setup(
         "Programming Language :: Python :: 3.9",
     ],
     packages=find_packages(exclude=["tests", "docs"]),
-    python_requires=">=3.6, <4",
-    install_requires=requirements,
+    python_requires=">=3.6",
+    install_requires=get_install_requirements("requirements.txt"),
+    extras_require=get_install_requirements("requirements_dev.txt"),
     license="{{cookiecutter.open_source_license}}",
-    setup_requires=setup_requirements,
     test_suite="tests",
-    tests_require=test_requirements,
     zip_safe=False,
 )

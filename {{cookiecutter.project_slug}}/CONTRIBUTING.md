@@ -108,7 +108,7 @@ Before you submit a pull request, check that it meets these guidelines:
 
 ### Deploying
 
-A reminder for maintainers on how to deploy. Make sure all your changes are committed (including an entry in HISTORY.md). Then run:
+A reminder for maintainers on how to deploy. Make sure all your changes are committed (including an entry in CHANGES.md). Then run:
 
 ``` shell
 bump2version patch # possible: major / minor / patch
