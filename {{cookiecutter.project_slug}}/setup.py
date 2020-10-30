@@ -28,14 +28,15 @@ setup(
     author_email="{{cookiecutter.author_email}}",
     classifiers=[
         # Update this before release
-        "Development Status :: 2 - Pre-Alpha",
+        "Development Status :: 3 - Alpha",
         "Natural Language :: English",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
     ],
-    packages=find_packages(),
+    packages=find_packages(exclude=["tests", "docs"]),
     python_requires=">=3.6, <4",
     install_requires=requirements,
     license="{{cookiecutter.open_source_license}}",
