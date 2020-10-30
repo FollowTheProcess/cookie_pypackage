@@ -1,0 +1,10 @@
+site_name: {{cookiecutter.project_name}}
+nav:
+  - Home: index.md
+  - API: mkapi/{{cookiecutter.project_slug}}
+theme:
+  name: readthedocs
+  nav_style: dark
+plugins:
+  - search
+  - mkapi

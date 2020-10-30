@@ -12,13 +12,15 @@ I created it from scratch, taking inspiration from other templates mostly as a l
 
 * Pytest only
 
+* Changed from sphinx to mkdocs
+
 ## Features
 
 * [Travis-CI](https://travis-ci.com): Ready for Travis CI testing.
 
 * [Nox](https://nox.thea.codes/en/stable/): Automated testing for python 3.6+
 
-* [Sphinx](https://www.sphinx-doc.org/en/master/): Ready for sphinx docs.
+* [Mkdocs](https://www.mkdocs.org): Easy markdown docs with Mkdocs and mkapi.
 
 * [bump2version](https://github.com/c4urself/bump2version): Pre-configured version bumping with a single command
 

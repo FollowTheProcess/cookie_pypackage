@@ -1,10 +1,10 @@
 import nox
-import os
+from pathlib import Path
 
-PROJECT_ROOT = os.path.abspath(os.getcwd())
+PROJECT_ROOT = Path(__file__).parent.resolve()
 
 
-@nox.session(python=["3.6", "3.7", "3.8"])
+@nox.session(python=["3.6", "3.7", "3.8", "3.9"])
 def test(session):
     """
     Runs the test suite against all supported python versions.
@@ -37,26 +37,17 @@ def format(session):
 @nox.session
 def docs(session):
     """
-    Builds project docs with sphinx.
+    Builds project docs with mkdocs.
     """
-    build_dir = os.path.join(PROJECT_ROOT, "docs", "build")
-    source_dir = os.path.join(PROJECT_ROOT, "docs", "source")
-
     # Clean any pre-built docs first
-    session.run("rm", "-rf", build_dir, external=True)
     session.install("-r", "requirements_dev.txt")
     session.install(".")
-    session.cd("docs")
-
-    sphinx_args = ["-b", "html", source_dir, build_dir]
 
     # Checks if running locally or on travis
     # If local, auto serves docs on default browser
     if not session.interactive:
-        sphinx_cmd = "sphinx-build"
+        session.run("mkdocs build --clean")
 
     else:
-        sphinx_cmd = "sphinx-autobuild"
-        sphinx_args.insert(0, "--open-browser")
-
-    session.run(sphinx_cmd, *sphinx_args)
+        session.run("mkdocs build --clean")
+        session.run("mkdocs serve")
