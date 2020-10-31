@@ -14,6 +14,8 @@ I created it from scratch, taking inspiration from other templates mostly as a l
 
 * Changed from sphinx to mkdocs
 
+* Removed readthedocs in favour of github pages
+
 ## Features
 
 * [Travis-CI](https://travis-ci.com): Ready for Travis CI testing.
