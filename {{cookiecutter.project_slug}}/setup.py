@@ -16,12 +16,18 @@ def read(path: Path, encoding: str = "utf-8") -> str:
         return fp.read()
 
 
-def get_install_requirements(path: Path) -> list:
+def get_install_requirements(path: str) -> list:
     """
     Utility function to read a requirements.txt type file.
     """
-    content = read(path)
-    return [req for req in content.split("\n") if req != "" and not req.startswith("#")]
+    path = Path(path)
+    if not path.exists():
+        return []
+    else:
+        content = read(path)
+        return [
+            req for req in content.split("\n") if req != "" and not req.startswith("#")
+        ]
 
 
 setup(
@@ -46,7 +52,7 @@ setup(
     packages=find_packages(exclude=["tests", "docs"]),
     python_requires=">=3.6",
     install_requires=get_install_requirements("requirements.txt"),
-    extras_require=get_install_requirements("requirements_dev.txt"),
+    extras_require={"dev": get_install_requirements("requirements_dev.txt")},
     license="{{cookiecutter.open_source_license}}",
     test_suite="tests",
     zip_safe=False,
