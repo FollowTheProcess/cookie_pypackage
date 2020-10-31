@@ -21,6 +21,9 @@ install:
   - pip install -r requirements_dev.txt
   - pip install .
 script: nox --non-interactive --session "$NOXSESSION"
+after_success:
+  - mkdocs gh-deploy --clean --config-file ./mkdocs.yml
+
 deploy:
   provider: pypi
   username: {{cookiecutter.author_pypi_username}}

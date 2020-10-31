@@ -10,6 +10,8 @@
 
 * Free software: {{cookiecutter.open_source_license}}
 
+* Documentation: [https://{{cookiecutter.author_github_username}}.github.io/{{cookiecutter.project_slug}}/](<https://{{cookiecutter.author_github_username}}.github.io/{{cookiecutter.project_slug}}/>)
+
 ## Project Description
 
 ## Installation
