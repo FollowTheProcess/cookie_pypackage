@@ -1,10 +1,11 @@
-import nox
 from pathlib import Path
+
+import nox
 
 PROJECT_ROOT = Path(__file__).parent.resolve()
 
 
-@nox.session(python=["3.6", "3.7", "3.8", "3.9"])
+@nox.session(python=["3.7", "3.8"])
 def test(session):
     """
     Runs the test suite against all supported python versions.
