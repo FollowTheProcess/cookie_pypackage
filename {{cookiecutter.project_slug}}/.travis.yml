@@ -2,23 +2,25 @@ language: python
 dist: xenial
 jobs:
   include:
+  - python: "3.6"
+    env: NOXSESSION="test-3.6"
   - python: "3.7"
     env: NOXSESSION="test-3.7"
   - python: "3.8"
     env: NOXSESSION="test-3.8"
-  - python: "3.8"
+  - python: "3.9"
+    env: NOXSESSION="test-3.9"
+  - python: "3.9"
     env: NOXSESSION="lint"
-  - python: "3.8"
+  - python: "3.9"
     env: NOXSESSION="format"
-  - python: "3.8"
+  - python: "3.9"
     env: NOXSESSION="docs"
 install:
   - pip install --upgrade pip setuptools
   - pip install -r requirements_dev.txt
   - pip install .
 script: nox --non-interactive --session "$NOXSESSION"
-after_success:
-  - mkdocs gh-deploy --clean --config-file ./mkdocs.yml
 
 deploy:
   provider: pypi
@@ -28,9 +30,9 @@ deploy:
   on:
     tags: true
     distributions: sdist bdist_wheel
-    python: 3.8
+    python: 3.9
     repo: "{{cookiecutter.author_github_username}}/{{cookiecutter.project_slug}}"
-    condition: "$NOXSESSION = \"test-3.8\""
+    condition: "$NOXSESSION = \"test-3.9\""
 
 # Assuming you have installed the travis-ci CLI tool, after you
 # create the Github repo and add it to Travis, run the
