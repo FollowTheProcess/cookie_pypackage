@@ -47,8 +47,8 @@ def docs(session):
     # Checks if running locally or on travis
     # If local, auto serves docs on default browser
     if not session.interactive:
-        session.run("mkdocs build --clean")
+        session.run("mkdocs", "build", "--clean")
 
     else:
-        session.run("mkdocs build --clean")
-        session.run("mkdocs serve")
+        session.run("mkdocs", "build", "--clean")
+        session.run("mkdocs" "serve")
