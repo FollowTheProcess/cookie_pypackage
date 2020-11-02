@@ -28,9 +28,9 @@ def style(c):
     """
     Runs style checking and linting tools on the project.
     """
-    c.run("isort .")
-    c.run("flake8")
-    c.run("black .")
+    c.run("isort {{cookiecutter.project_slug}}")
+    c.run("flake8 {{cookiecutter.project_slug}}")
+    c.run("black {{cookiecutter.project_slug}}")
 
 
 @task
