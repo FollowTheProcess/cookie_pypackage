@@ -51,4 +51,4 @@ def docs(session):
 
     else:
         session.run("mkdocs", "build", "--clean")
-        session.run("mkdocs" "serve")
+        session.run("mkdocs", "serve")
