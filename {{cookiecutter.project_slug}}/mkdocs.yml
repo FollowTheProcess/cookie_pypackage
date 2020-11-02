@@ -1,6 +1,7 @@
 site_name: {{cookiecutter.project_name}}
 nav:
   - Home: index.md
+  # You'll need to add module path here for mkapi to work
   - API: mkapi/{{cookiecutter.project_slug}}
 theme:
   name: readthedocs

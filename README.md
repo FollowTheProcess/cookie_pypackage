@@ -31,17 +31,19 @@ I created it from scratch, taking inspiration from other templates mostly as a l
 
 ## How to Set up GitHub Pages
 
-This template is designed such that the docs (mkdocs) will be automatically built and served on github pages on each travis build.
+This template is designed such that the docs (mkdocs) will be automatically built and served on github pages on each successful travis build.
 
 In order to make this work though you must follow these steps on your GitHub Repo:
 
 *GitHub has excellent documentation on using GitHub pages [HERE](https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages)*
 
-1) Go to your project repo settings, scroll down to the GitHub Pages section.
+1) Generate a GitHub [personal access token](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token)
 
-2) After the first push or merge to master, the docs should have been built by travis and can be found on the gh-pages branch.
+2) Take this token and put it in your [environmental variables](https://docs.travis-ci.com/user/environment-variables/) in your travis repo settings. The name is very important, name it `GITHUB_TOKEN`.
 
-3) Point your GitHub pages settings to the root folder of this branch...
+3) After the first push or merge to master, the docs should have been built by travis and can be found on the gh-pages branch.
+
+3) Point your GitHub pages settings to the root folder of this branch (if it isn't already automatically)...
 
 ![GHPagesBranch](./img/github_pages_setting.png)
 

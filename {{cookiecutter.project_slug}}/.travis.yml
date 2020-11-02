@@ -1,9 +1,8 @@
+os: linux
 language: python
 dist: xenial
 jobs:
   include:
-  - python: "3.6"
-    env: NOXSESSION="test-3.6"
   - python: "3.7"
     env: NOXSESSION="test-3.7"
   - python: "3.8"
@@ -21,6 +20,10 @@ install:
   - pip install -r requirements_dev.txt
   - pip install .
 script: nox --non-interactive --session "$NOXSESSION"
+after_success:
+  - git remote add gh-token "https://${GITHUB_TOKEN}@github.com/{{cookiecutter.author_github_username}}/{{cookiecutter.project_slug}}.git";
+  - git fetch gh-token && git fetch gh-token gh-pages:gh-pages;
+  - mkdocs gh-deploy -v --clean --remote-name gh-token;
 
 deploy:
   provider: pypi

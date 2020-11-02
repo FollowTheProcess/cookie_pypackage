@@ -5,7 +5,7 @@ import nox
 PROJECT_ROOT = Path(__file__).parent.resolve()
 
 
-@nox.session(python=["3.7", "3.8"])
+@nox.session(python=["3.7", "3.8", "3.9"])
 def test(session):
     """
     Runs the test suite against all supported python versions.
