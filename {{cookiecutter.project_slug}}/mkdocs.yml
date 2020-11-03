@@ -1,6 +1,9 @@
 site_name: {{cookiecutter.project_name}}
 nav:
   - Home: index.md
+  - Authors: authors.md
+  - Changelog: changes.md
+  - Contributing: contributing.md
   # You'll need to add module path here for mkapi to work
   - API: mkapi/{{cookiecutter.project_slug}}
 theme:
