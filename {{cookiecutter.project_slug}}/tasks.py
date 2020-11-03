@@ -28,9 +28,13 @@ def style(c):
     """
     Runs style checking and linting tools on the project.
     """
-    c.run("isort {{cookiecutter.project_slug}}")
-    c.run("flake8 {{cookiecutter.project_slug}}")
-    c.run("black {{cookiecutter.project_slug}}")
+    files = ["{{cookiecutter.project_slug}}", "tests", "noxfile.py", "tasks.py", "setup.py"]
+
+    for file in files:
+
+        c.run(f"isort {file}")
+        c.run(f"flake8 {file}")
+        c.run(f"black {file}")
 
 
 @task
