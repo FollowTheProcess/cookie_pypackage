@@ -28,11 +28,11 @@ after_success:
 deploy:
   provider: pypi
   username: {{cookiecutter.author_pypi_username}}
+  distributions: "sdist bdist_wheel"
   password:
     secure: PLEASE_REPLACE_ME
   on:
     tags: true
-    distributions: sdist bdist_wheel
     python: 3.9
     repo: "{{cookiecutter.author_github_username}}/{{cookiecutter.project_slug}}"
     condition: "$NOXSESSION = \"test-3.9\""
