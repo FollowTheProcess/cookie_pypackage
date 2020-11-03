@@ -28,7 +28,13 @@ def style(c):
     """
     Runs style checking and linting tools on the project.
     """
-    files = ["{{cookiecutter.project_slug}}", "tests", "noxfile.py", "tasks.py", "setup.py"]
+    files = [
+        "{{cookiecutter.project_slug}}",
+        "tests",
+        "noxfile.py",
+        "tasks.py",
+        "setup.py",
+    ]
 
     for file in files:
 
