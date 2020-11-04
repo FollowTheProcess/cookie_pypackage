@@ -21,8 +21,16 @@ def lint(session):
     """
     Runs flake8 linting.
     """
+    files = [
+        "{{cookiecutter.project_slug}}",
+        "tests",
+        "noxfile.py",
+        "tasks.py",
+        "setup.py",
+    ]
+
     session.install("-r", "requirements_dev.txt")
-    session.run("flake8", "{{cookiecutter.project_slug}}")
+    session.run("flake8", *files)
 
 
 @nox.session
@@ -30,9 +38,17 @@ def format(session):
     """
     Formats project with black and isort (import order formatting).
     """
+    files = [
+        "{{cookiecutter.project_slug}}",
+        "tests",
+        "noxfile.py",
+        "tasks.py",
+        "setup.py",
+    ]
+
     session.install("-r", "requirements_dev.txt")
-    session.run("black", "{{cookiecutter.project_slug}}")
-    session.run("isort", "{{cookiecutter.project_slug}}")
+    session.run("black", *files)
+    session.run("isort", *files)
 
 
 @nox.session
