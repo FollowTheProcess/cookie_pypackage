@@ -11,32 +11,16 @@ def test(session):
     Runs the test suite against all supported python versions.
     """
     session.install("-r", "requirements_dev.txt")
+    session.install(".")
     # Posargs allows passing of tests directly
     tests = session.posargs or ["tests/"]
     session.run("pytest", *tests)
 
 
 @nox.session
-def lint(session):
+def style(session):
     """
-    Runs flake8 linting.
-    """
-    files = [
-        "{{cookiecutter.project_slug}}",
-        "tests",
-        "noxfile.py",
-        "tasks.py",
-        "setup.py",
-    ]
-
-    session.install("-r", "requirements_dev.txt")
-    session.run("flake8", *files)
-
-
-@nox.session
-def format(session):
-    """
-    Formats project with black and isort (import order formatting).
+    Formats project with black and isort, then runs flake8 linting.
     """
     files = [
         "{{cookiecutter.project_slug}}",
@@ -49,6 +33,7 @@ def format(session):
     session.install("-r", "requirements_dev.txt")
     session.run("black", *files)
     session.run("isort", *files)
+    session.run("flake8", *files)
 
 
 @nox.session
