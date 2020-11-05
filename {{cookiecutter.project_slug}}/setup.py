@@ -5,14 +5,14 @@ from setuptools import find_packages, setup
 ROOT = Path(__file__).parent.resolve()
 
 
-def read(path: Path, encoding: str = "utf-8") -> str:
+def read(path: str, encoding: str = "utf-8") -> str:
     """
     Utility function to read the content of files to
     be passed to setup arguments.
     """
 
-    path = ROOT.joinpath(path)
-    with open(path, encoding=encoding) as fp:
+    root_path = ROOT.joinpath(path)
+    with open(root_path, encoding=encoding) as fp:
         return fp.read()
 
 
@@ -20,14 +20,10 @@ def get_install_requirements(path: str) -> list:
     """
     Utility function to read a requirements.txt type file.
     """
-    path = Path(path)
-    if not path.exists():
-        return []
-    else:
-        content = read(path)
-        return [
-            req for req in content.split("\n") if req != "" and not req.startswith("#")
-        ]
+    content = read(path)
+    return [
+        req for req in content.split("\n") if req != "" and not req.startswith("#")
+    ]
 
 
 setup(
