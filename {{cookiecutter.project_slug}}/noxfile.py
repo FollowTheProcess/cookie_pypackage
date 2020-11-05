@@ -20,7 +20,7 @@ def test(session):
 @nox.session
 def style(session):
     """
-    Formats project with black and isort, then runs flake8 linting.
+    Formats project with black and isort, then runs flake8 and mypy linting.
     """
     files = [
         "{{cookiecutter.project_slug}}",
@@ -34,6 +34,7 @@ def style(session):
     session.run("black", *files)
     session.run("isort", *files)
     session.run("flake8", *files)
+    session.run("mypy", *files)
 
 
 @nox.session
