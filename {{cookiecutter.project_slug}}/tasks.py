@@ -41,6 +41,7 @@ def style(c):
         c.run(f"isort {file}")
         c.run(f"flake8 {file}")
         c.run(f"black {file}")
+        c.run(f"mypy {file}")
 
 
 @task
