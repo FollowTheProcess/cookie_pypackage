@@ -17,7 +17,7 @@ def test(session):
     session.run("pytest", *tests)
 
 
-@nox.session(python="3.9")
+@nox.session()
 def style(session):
     """
     Formats project with black and isort, then runs flake8 and mypy linting.
@@ -37,7 +37,7 @@ def style(session):
     session.run("mypy", *files)
 
 
-@nox.session(python="3.9")
+@nox.session()
 def docs(session):
     """
     Builds project docs with mkdocs.
