@@ -2,7 +2,10 @@
 __pycache__/
 *.py[cod]
 *$py.class
-.pytest_cache
+
+# Temp files
+~*
+.DS_Store
 
 # C extensions
 *.so
@@ -67,9 +70,6 @@ instance/
 # Sphinx documentation
 docs/_build/
 
-# Mkdocs documentation
-docs/site
-
 # PyBuilder
 target/
 
@@ -101,6 +101,7 @@ ENV/
 .ropeproject
 
 # mkdocs documentation
+docs/site
 /site
 
 # mypy
