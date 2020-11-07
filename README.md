@@ -21,7 +21,7 @@ I created it from scratch, taking inspiration from other templates mostly as a l
 
 * [Travis-CI](https://travis-ci.com): Ready for Travis CI testing.
 
-* [Nox](https://nox.thea.codes/en/stable/): Automated testing for python 3.6+
+* [Nox](https://nox.thea.codes/en/stable/): Automated testing for python 3.7+
 
 * [Invoke](http://www.pyinvoke.org): Easy project automation
 
@@ -31,22 +31,60 @@ I created it from scratch, taking inspiration from other templates mostly as a l
 
 * Auto-release to [PyPI](https://pypi.org) when you push a new tag to master
 
-## How to Set up GitHub Pages
+## Usage
 
-This template is designed such that the docs (mkdocs) will be automatically built and served on github pages on each successful travis build.
+* Ensure you have cookiecutter installed:
 
-In order to make this work though you must follow these steps on your GitHub Repo:
+``` shell
+# Mac
+brew install cookiecutter
 
-*GitHub has excellent documentation on using GitHub pages [HERE](https://docs.github.com/en/free-pro-team@latest/github/working-with-github-pages)*
+# Linux
+apt-get install cookiecutter
 
-1) Generate a GitHub [personal access token](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token)
+# Python
+pip install --upgrade cookiecutter
+```
 
-2) Take this token and put it in your [environmental variables](https://docs.travis-ci.com/user/environment-variables/) in your travis repo settings. The name is very important, name it `GITHUB_TOKEN`.
+* Navigate to where you keep your projects
 
-3) After the first push or merge to master, the docs should have been built by travis and can be found on the gh-pages branch.
+* Call cookiecutter with this template and answer all the questions
 
-3) Point your GitHub pages settings to the root folder of this branch (if it isn't already automatically)...
+``` shell
+cookiecutter https://github.com/FollowTheProcess/cookie_pypackage.git
+```
 
-![GHPagesBranch](./img/github_pages_setting.png)
+* Create a virtual environment, a git repo and start developing
 
-4) That should be it! After a few minutes your docs will be available on GitHub Pages.
+``` shell
+cd <name_of_your_project>
+
+python3 -m venv venv
+
+# Activate the venv
+source venv/bin/activate
+```
+
+* Make a first commit to set up the github repo
+
+* Add repo to Pyupio
+
+* Merge pyup config pull request
+
+* Pull down changes
+
+* Encrypt PyPI password with travis (nothing will be deployed unless you push a new git tag to main)
+
+``` shell
+travis encrypt --add deploy.password
+
+# Will prompt to add PyPI password then press enter, then ctrl D
+```
+
+* Make a commit and push this encrypt
+
+* Generate a GitHub [personal access token](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token). **KEEP THIS SAFE SOMEWHERE LOCAL, YOU ONLY GET TO SEE IT ONCE!**
+
+* Add the repo to your Travis account and create an environment variable called `GITHUB_TOKEN` with the value of your GitHub personal access token.
+
+* That should be it, from now on everything will be handled automatically. All you need to do is write code, tests and docs! Your code will be style checked, your tests will be run and your docs will be automatically deployed to GitHub Pages if the build is a success.
