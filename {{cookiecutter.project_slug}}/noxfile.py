@@ -31,9 +31,9 @@ def style(session):
     ]
 
     session.install("-r", "requirements_dev.txt")
-    session.run("black", *files)
     session.run("isort", *files)
     session.run("flake8", *files)
+    session.run("black", *files)
     session.run("mypy", *files)
 
 
@@ -46,11 +46,4 @@ def docs(session):
     session.install("-r", "requirements_dev.txt")
     session.install(".")
 
-    # Checks if running locally or on travis
-    # If local, auto serves docs on default browser
-    if not session.interactive:
-        session.run("mkdocs", "build", "--clean")
-
-    else:
-        session.run("mkdocs", "build", "--clean")
-        session.run("mkdocs", "serve")
+    session.run("mkdocs", "build", "--clean")
