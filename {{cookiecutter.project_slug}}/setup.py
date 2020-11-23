@@ -2,6 +2,8 @@ from pathlib import Path
 
 from setuptools import find_packages, setup
 
+import versioneer
+
 ROOT = Path(__file__).parent.resolve()
 
 
@@ -21,14 +23,13 @@ def get_install_requirements(path: str) -> list:
     Utility function to read a requirements.txt type file.
     """
     content = read(path)
-    return [
-        req for req in content.split("\n") if req != "" and not req.startswith("#")
-    ]
+    return [req for req in content.split("\n") if req != "" and not req.startswith("#")]
 
 
 setup(
     name="{{cookiecutter.project_slug}}",
-    version="{{cookiecutter.project_version}}",
+    version=versioneer.get_version(),
+    cmdclass=versioneer.get_cmdclass(),
     description="{{cookiecutter.project_short_description}}",
     long_description=read("README.md"),
     long_description_content_type="text/markdown",
