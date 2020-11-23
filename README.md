@@ -65,6 +65,12 @@ python3 -m venv venv
 source venv/bin/activate
 ```
 
+* Install versioneer...
+
+``` shell
+versioneer install
+```
+
 * Make a first commit to set up the github repo
 
 * Add repo to Pyupio

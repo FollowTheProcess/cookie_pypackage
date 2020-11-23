@@ -13,8 +13,8 @@ def read(path: str, encoding: str = "utf-8") -> str:
     be passed to setup arguments.
     """
 
-    root_path = ROOT.joinpath(path)
-    with open(root_path, encoding=encoding) as fp:
+    file_path = ROOT.joinpath(path)
+    with open(file_path, encoding=encoding) as fp:
         return fp.read()
 
 
