@@ -27,7 +27,7 @@ I created it from scratch, taking inspiration from other templates mostly as a l
 
 * [Mkdocs](https://www.mkdocs.org): Easy markdown docs with Mkdocs, mkapi, and github pages
 
-* [bump2version](https://github.com/c4urself/bump2version): Pre-configured version bumping with a single command
+* [Versioneer](https://github.com/python-versioneer/python-versioneer): Pre-configured version bumping, all you need to do is create a new tag.
 
 * Auto-release to [PyPI](https://pypi.org) when you push a new tag to master
 

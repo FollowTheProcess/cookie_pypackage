@@ -3,11 +3,12 @@ Invoke tasks for project automation.
 
 Run invoke --list to see options in command line.
 
-Author: {{cookiecutter.author_name}}
+Author: Tom Fleet
 """
-from invoke import task
 from pathlib import Path
 
+from invoke import task
+from rich import print as rprint
 
 PROJECT_ROOT = Path(__file__).parent.resolve()
 
@@ -28,20 +29,12 @@ def style(c):
     """
     Runs style checking and linting tools on the project.
     """
-    files = [
-        "{{cookiecutter.project_slug}}",
-        "tests",
-        "noxfile.py",
-        "tasks.py",
-        "setup.py",
-    ]
-
-    for file in files:
-
-        c.run(f"isort {file}")
-        c.run(f"flake8 {file}")
-        c.run(f"black {file}")
-        c.run(f"mypy {file}")
+    rprint("[italic bold blue]Flaking... [/italic bold blue]")
+    c.run("flake8 .")
+    rprint("[italic bold blue]Blackening...[/italic bold blue]")
+    c.run("black .")
+    rprint("[italic bold blue]Type Checking...[/italic bold blue]")
+    c.run("mypy .")
 
 
 @task
