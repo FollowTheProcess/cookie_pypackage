@@ -111,9 +111,10 @@ Before you submit a pull request, check that it meets these guidelines:
 A reminder for maintainers on how to deploy. Make sure all your changes are committed (including an entry in changes.md). Then run:
 
 ``` shell
-bump2version patch # possible: major / minor / patch
-git push
+git tag x.x.x # Version number
 git push --tags
 ```
+
+Versioneer will take care of the rest.
 
 Travis will then deploy to PyPI if tests pass.
