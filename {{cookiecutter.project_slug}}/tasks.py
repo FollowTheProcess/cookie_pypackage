@@ -32,6 +32,7 @@ def style(c):
     rprint("[italic bold blue]Flaking... [/italic bold blue]")
     c.run("flake8 .")
     rprint("[italic bold blue]Blackening...[/italic bold blue]")
+    c.run("isort .")
     c.run("black .")
     rprint("[italic bold blue]Type Checking...[/italic bold blue]")
     c.run("mypy .")

@@ -31,6 +31,7 @@ def style(session):
     ]
 
     session.install("-r", "requirements_dev.txt")
+    session.run("isort", *files)
     session.run("black", *files)
     session.run("flake8", *files)
     session.run("mypy", *files)
