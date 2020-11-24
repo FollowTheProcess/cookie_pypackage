@@ -12,4 +12,5 @@ mkdocs>=1.1.2
 mkapi>=1.0.13
 twine>=3.2.0
 pytest>=6.1.2
+pytest-cov>=2.10.1
 mypy>=0.790

@@ -43,7 +43,7 @@ def test(c):
     """
     Runs the test suite.
     """
-    c.run("pytest")
+    c.run("pytest --cov={{cookiecutter.project_slug}} tests/")
 
 
 @task
