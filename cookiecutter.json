@@ -13,5 +13,6 @@
     "author_pypi_username": "{{cookiecutter.author_github_username}}",
     "project_github_url": "https://github.com/{{cookiecutter.author_github_username}}/{{cookiecutter.project_slug}}",
     "author_name": "Your Name",
-    "author_email": "yourname@example.com"
+    "author_email": "yourname@example.com",
+    "use_gh_cli_to_create_repo": "y" 
 }
