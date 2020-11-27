@@ -5,7 +5,7 @@
 
 {% if cookiecutter.use_gh_cli_to_create_repo == 'y' -%}
 
-cd {{cookiecutter.project_slug}}
+# Already at the root of the generated project, no need to cd anywhere
 
 git init
 git add -A
