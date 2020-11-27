@@ -52,4 +52,8 @@ setup(
     license="{{cookiecutter.open_source_license}}",
     test_suite="tests",
     zip_safe=False,
+    project_urls={
+        "Documentation": "https://{{cookiecutter.author_github_username}}.github.io/{{cookiecutter.project_slug}}/",
+        "Source Code": "{{cookiecutter.project_github_url}}",
+    },
 )

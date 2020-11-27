@@ -53,14 +53,23 @@ git clone https://github.com/<your_username>/{{cookiecutter.project_slug}}.git
 cd {{cookiecutter.project_slug}}
 
 # Create a virtualenv, called whatever you like, and activate it (convention is 'venv')
-python3 -m venv ./<env_name>
-source ./<env_name>/bin/activate
+python3 -m venv <env_name>
+source <env_name>/bin/activate
+
+# Ensure build tools are updated
+python3 -m pip install --upgrade pip setuptools wheel
 
 # Install development dependencies
 python3 -m pip install -r requirements_dev.txt
 
 # Finally, install the project in editable mode
 python3 -m pip install -e .
+
+# Alternatively, the last two can be replaced by
+python3 -m pip install -e .[dev]
+
+# If using zsh not bash, you need to escape the square brackets
+python3 -m pip install -e .\[dev\]
 ```
 
 4) Create a branch for local development:
@@ -77,7 +86,7 @@ Now you can make any changes locally.
 nox
 ```
 
-Nox will run a bunch of tests against different python versions (some of these will be skipped if you don't have a particular interpreter, don't worry this is normal! These will all be run automatically by Travis later). It will also format your code using black and run some linting.
+Nox will run a bunch of tests against different python versions (some of these will be skipped if you don't have a particular interpreter, don't worry this is normal! These will all be run automatically by Travis later). It will also format your code using black, run some linting, and check the docs build.
 
 6) If the tests pass and you're happy, commit your changes and push your branch to GitHub:
 

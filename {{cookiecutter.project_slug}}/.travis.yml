@@ -1,6 +1,8 @@
 os: linux
 language: python
 dist: xenial
+notifications:
+  email: false
 jobs:
   include:
     - python: "3.7"
@@ -14,18 +16,19 @@ jobs:
     - python: "3.9"
       env: NOXSESSION="docs"
 install:
-  - pip install --upgrade pip setuptools
+  - pip install --upgrade pip setuptools wheel
   - pip install -r requirements_dev.txt
   - pip install .
 script: nox --non-interactive --session "$NOXSESSION"
 after_success:
+  # Builds docs and auto-deploys to GitHub Pages
   - git remote add gh-token "https://${GITHUB_TOKEN}@github.com/{{cookiecutter.author_github_username}}/{{cookiecutter.project_slug}}.git";
   - git fetch gh-token && git fetch gh-token gh-pages:gh-pages;
   - mkdocs gh-deploy -v --clean --remote-name gh-token;
 
 deploy:
   provider: pypi
-  username: { { cookiecutter.author_pypi_username } }
+  username: {{cookiecutter.author_pypi_username}}
   distributions: "sdist bdist_wheel"
   password:
     secure: PLEASE_REPLACE_ME
