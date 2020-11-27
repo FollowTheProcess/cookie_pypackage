@@ -56,7 +56,7 @@ pip install --upgrade cookiecutter
 cookiecutter https://github.com/FollowTheProcess/cookie_pypackage.git
 ```
 
-* Create a virtual environment, a git repo and start developing
+* Create a virtual environment, a git repo (if not using the gh cli) and start developing
 
 ``` shell
 cd <name_of_your_project>
