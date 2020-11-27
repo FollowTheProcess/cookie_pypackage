@@ -15,7 +15,7 @@ I created it from scratch, taking inspiration from other templates mostly as a l
 
 * Changed from sphinx to mkdocs
 
-* Removed readthedocs in favour of github pages
+* Changed from readthedocs to github pages.
 
 ## Features
 
@@ -28,6 +28,8 @@ I created it from scratch, taking inspiration from other templates mostly as a l
 * [Mkdocs](https://www.mkdocs.org): Easy markdown docs with Mkdocs, mkapi, and github pages
 
 * [Versioneer](https://github.com/python-versioneer/python-versioneer): Pre-configured version bumping, all you need to do is create a new tag.
+
+* [GitHub cli](https://cli.github.com): Option to use the new gh cli to create a GitHub repo for you after project creation. (You'll need to have this already set up)
 
 * Auto-release to [PyPI](https://pypi.org) when you push a new tag to master
 
