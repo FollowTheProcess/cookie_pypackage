@@ -11,6 +11,8 @@ git init
 git add -A
 git commit -m "Initial Commit (Automated at Project Creation)"
 
-gh repo create --description "{{cookiecutter.project_short_description}}"
+gh repo create --confirm --public --description "{{cookiecutter.project_short_description}}"
+
+git push --set-upstream origin master
 
 {% endif %}
