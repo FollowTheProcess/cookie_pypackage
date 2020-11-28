@@ -1,6 +1,9 @@
 {
     "project_name": "Full name of your project",
     "project_slug": "{{cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_')}}",
+    "_copy_without_render": [
+        "*.github/workflows"
+    ],
     "project_short_description": "A short description of your project",
     "open_source_license": [
         "MIT license",
