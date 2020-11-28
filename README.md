@@ -75,6 +75,13 @@ pip install -r requirements_dev.txt
 versioneer install
 ```
 
+* If using github actions to auto-build docs you'll need to do it manually first...
+
+``` shell
+mkdocs build --clean
+mkdocs gh-deploy
+```
+
 * Make a first commit to set up the github repo (if not used the gh cli)
 
 * Add repo to Pyupio
