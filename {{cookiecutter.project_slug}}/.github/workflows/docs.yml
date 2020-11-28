@@ -23,7 +23,7 @@ jobs:
           mkdocs build --clean
       - name: Deploy Docs
         env:
-          PAGES_TOKEN: ${{ secrets.PAGES_TOKEN }}
+          PAGES_TOKEN: $PAGES_TOKEN
         run: |
           git remote add gh-token "https://${PAGES_TOKEN}@github.com/FollowTheProcess/pymechtest.git";
           git fetch gh-token && git fetch gh-token gh-pages:gh-pages;
