@@ -83,6 +83,6 @@ versioneer install
 
 * Add your token to the repository secrets and name it `PAGES_TOKEN`
 
-* If you wish to deploy packages to PyPI using the `release` workflow, you will also need to add your PyPI username and password to the repository secrets as `TWINE_USERNAME` and `TWINE_PASSWORD` respectively.
+* If you wish to deploy packages to PyPI using the `release` workflow, you will also need to add your PyPI username and password to the repository secrets as `PYPI_USERNAME` and `PYPI_PASSWORD` respectively.
 
 * That should be it, from now on everything will be handled automatically. All you need to do is write code, tests and docs! Your code will be style checked, your tests will be run and your docs will be automatically deployed to GitHub Pages if the build is a success.
