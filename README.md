@@ -19,7 +19,7 @@ I created it from scratch, taking inspiration from other templates mostly as a l
 
 ## Features
 
-* [Travis-CI](https://travis-ci.com): Ready for Travis CI testing.
+* [Travis-CI](https://travis-ci.org): Ready for Travis CI testing.
 
 * [Nox](https://nox.thea.codes/en/stable/): Automated testing for python 3.7+
 
