@@ -14,7 +14,7 @@ def test(session):
     session.install("pytest", "pytest-cov")
     # Posargs allows passing of tests directly
     tests = session.posargs or ["tests/"]
-    session.run("pytest", "--cov={{cookiecutter.project_slug", *tests)
+    session.run("pytest", "--cov={{cookiecutter.project_slug}}", *tests)
 
 
 @nox.session()
