@@ -52,4 +52,11 @@ def docs(c):
     Builds mkdocs docs.
     """
     c.run("mkdocs build --clean")
-    c.run("mkdocs serve")
+
+
+@task(style, test, docs)
+def check(c):
+    """
+    Runs all project checking tasks in one go.
+    """
+    rprint("[bold green]All Done![/bold green]")

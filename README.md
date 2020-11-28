@@ -19,9 +19,9 @@ I created it from scratch, taking inspiration from other templates mostly as a l
 
 ## Features
 
-* [Travis-CI](https://travis-ci.org): Ready for Travis CI testing.
+* [GitHub Actions](https://docs.github.com/en/free-pro-team@latest/actions): Ready for GitHub actions CI.
 
-* [Nox](https://nox.thea.codes/en/stable/): Automated testing for python 3.7+
+* [Nox](https://nox.thea.codes/en/stable/): Automated testing for python 3.6+
 
 * [Invoke](http://www.pyinvoke.org): Easy project automation
 
@@ -31,7 +31,7 @@ I created it from scratch, taking inspiration from other templates mostly as a l
 
 * [GitHub cli](https://cli.github.com): Option to use the new gh cli to create a GitHub repo for you after project creation. (You'll need to have this already set up)
 
-* Auto-release to [PyPI](https://pypi.org) when you push a new tag to master
+* Auto-release to [PyPI](https://pypi.org) when you create a new release on GitHub and the tests pass.
 
 ## Usage
 
@@ -63,8 +63,10 @@ cd <name_of_your_project>
 
 python3 -m venv venv
 
-# Activate the venv
+# Activate the venv and install dependencies
 source venv/bin/activate
+python3 -m pip install --upgrade pip setuptools wheel
+pip install -r requirements_dev.txt
 ```
 
 * Install versioneer...
@@ -73,26 +75,14 @@ source venv/bin/activate
 versioneer install
 ```
 
-* Make a first commit to set up the github repo
+* Make a first commit to set up the github repo (if not used the gh cli)
 
 * Add repo to Pyupio
 
-* Merge pyup config pull request
-
-* Pull down changes
-
-* Encrypt PyPI password with travis (nothing will be deployed unless you push a new git tag to main)
-
-``` shell
-travis encrypt --add deploy.password
-
-# Will prompt to add PyPI password then press enter, then ctrl D
-```
-
-* Make a commit and push this encrypt
-
 * Generate a GitHub [personal access token](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token). **KEEP THIS SAFE SOMEWHERE LOCAL, YOU ONLY GET TO SEE IT ONCE!**
 
-* Add the repo to your Travis account and create an environment variable called `GITHUB_TOKEN` with the value of your GitHub personal access token.
+* Add your token to the repository secrets and name it `PAGES_TOKEN`
+
+* If you wish to deploy packages to PyPI using the `release` workflow, you will also need to add your PyPI username and password to the repository secrets as `TWINE_USERNAME` and `TWINE_PASSWORD` respectively.
 
 * That should be it, from now on everything will be handled automatically. All you need to do is write code, tests and docs! Your code will be style checked, your tests will be run and your docs will be automatically deployed to GitHub Pages if the build is a success.

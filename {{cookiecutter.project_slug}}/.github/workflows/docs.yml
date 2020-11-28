@@ -1,0 +1,30 @@
+name: Docs
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set Up Python 3.9
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+      - name: Install Dependencies
+        run: |
+          python3 -m pip install --upgrade pip setuptools wheel
+          pip install -r requirements.txt
+          pip install mkdocs mkapi
+          pip install .
+      - name: Build Mkdocs
+        run: |
+          mkdocs build --clean
+      - name: Deploy Docs
+        env:
+          PAGES_TOKEN: ${{ secrets.PAGES_TOKEN }}
+        run: |
+          git remote add gh-token "https://${PAGES_TOKEN}@github.com/FollowTheProcess/pymechtest.git";
+          git fetch gh-token && git fetch gh-token gh-pages:gh-pages;
+          mkdocs gh-deploy -v --clean --remote-name gh-token;
