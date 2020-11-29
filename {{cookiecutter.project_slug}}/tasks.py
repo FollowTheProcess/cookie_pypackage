@@ -49,9 +49,18 @@ def test(c):
 @task
 def docs(c):
     """
-    Builds mkdocs docs.
+    Builds sphinx docs. Cleans build dir first so build is always fresh.
     """
-    c.run("mkdocs build --clean")
+    c.run("rm -rf docs/_build/*")
+    c.run("sphinx-build -b html docs/ docs/_build/html")
+
+
+@task(docs)
+def autodocs(c):
+    """
+    Automatically builds fresh docs from source and opens browser to show them.
+    """
+    c.run("sphinx-autobuild --open-browser -b html docs/ docs/_build/html")
 
 
 @task(style, test, docs)

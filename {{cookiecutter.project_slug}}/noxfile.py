@@ -17,7 +17,7 @@ def test(session):
     session.run("pytest", "--cov={{cookiecutter.project_slug}}", *tests)
 
 
-@nox.session()
+@nox.session(python="3.9")
 def style(session):
     """
     Formats project with black and isort, then runs flake8 and mypy linting.
@@ -31,13 +31,22 @@ def style(session):
     session.run("mypy", ".")
 
 
-@nox.session()
+@nox.session(python="3.9")
 def docs(session):
     """
-    Builds project docs with mkdocs.
+    Build the documentation.
     """
-    # Clean any pre-built docs first
-    session.install("mkdocs", "mkapi")
-    session.install(".")
+    build_dir = str(PROJECT_ROOT.joinpath("docs/_build/html"))
+    source_dir = str(PROJECT_ROOT.joinpath("docs/"))
+    sphinx_args = ["-b", "html", source_dir, build_dir]
 
-    session.run("mkdocs", "build", "--clean")
+    # Clean any pre-built docs
+    session.run("rm", "-rf", build_dir, external=True)
+    session.install(
+        "sphinx",
+        "sphinx-autobuild",
+        "sphinx-rtd-theme",
+        "recommonmark",
+    )
+    session.install(".")
+    session.run("sphinx-build", *sphinx_args)

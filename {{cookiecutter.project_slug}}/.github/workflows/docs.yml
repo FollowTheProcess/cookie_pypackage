@@ -15,16 +15,8 @@ jobs:
       - name: Install Dependencies
         run: |
           python3 -m pip install --upgrade pip setuptools wheel
-          pip install -r requirements.txt
-          pip install mkdocs mkapi
           pip install .
-      - name: Build Mkdocs
+          pip install sphinx sphinx-rtd-theme recommonmark
+      - name: Build Sphinx Docs
         run: |
-          mkdocs build --clean
-      - name: Deploy Docs
-        env:
-          PAGES_TOKEN: $PAGES_TOKEN
-        run: |
-          git remote add gh-token "https://${PAGES_TOKEN}@github.com/FollowTheProcess/pymechtest.git";
-          git fetch gh-token && git fetch gh-token gh-pages:gh-pages;
-          mkdocs gh-deploy -v --clean --remote-name gh-token;
+          sphinx-build -b html docs/ docs/_build/html

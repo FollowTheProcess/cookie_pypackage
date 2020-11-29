@@ -13,9 +13,7 @@ I created it from scratch, taking inspiration from other templates mostly as a l
 
 * Pytest only
 
-* Changed from sphinx to mkdocs
-
-* Changed from readthedocs to github pages.
+* Change CI provider from Travis to GitHub actions
 
 ## Features
 
@@ -25,7 +23,7 @@ I created it from scratch, taking inspiration from other templates mostly as a l
 
 * [Invoke](http://www.pyinvoke.org): Easy project automation
 
-* [Mkdocs](https://www.mkdocs.org): Easy markdown docs with Mkdocs, mkapi, and github pages
+* [Sphinx](https://www.sphinx-doc.org/en/master/): Production ready docs with Sphinx and readthedocs.
 
 * [Versioneer](https://github.com/python-versioneer/python-versioneer): Pre-configured version bumping, all you need to do is create a new tag.
 
@@ -75,20 +73,9 @@ pip install -r requirements_dev.txt
 versioneer install
 ```
 
-* If using github actions to auto-build docs you'll need to do it manually first...
-
-``` shell
-mkdocs build --clean
-mkdocs gh-deploy
-```
-
 * Make a first commit to set up the github repo (if not used the gh cli)
 
 * Add repo to Pyupio
-
-* Generate a GitHub [personal access token](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token). **KEEP THIS SAFE SOMEWHERE LOCAL, YOU ONLY GET TO SEE IT ONCE!**
-
-* Add your token to the repository secrets and name it `PAGES_TOKEN`
 
 * If you wish to deploy packages to PyPI using the `release` workflow, you will also need to add your PyPI username and password to the repository secrets as `PYPI_USERNAME` and `PYPI_PASSWORD` respectively.
 

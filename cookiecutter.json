@@ -6,11 +6,11 @@
     ],
     "project_short_description": "A short description of your project",
     "open_source_license": [
-        "MIT license",
+        "MIT",
         "BSD-3-Clause",
-        "ISC license",
-        "Apache Software License 2.0",
-        "GNU General Public License v3"
+        "ISC",
+        "Apache 2.0",
+        "GPLv3"
     ],
     "author_github_username": "YourUserName",
     "project_github_url": "https://github.com/{{cookiecutter.author_github_username}}/{{cookiecutter.project_slug}}",
