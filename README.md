@@ -19,13 +19,11 @@ I created it from scratch, taking inspiration from other templates mostly as a l
 
 * [GitHub Actions](https://docs.github.com/en/free-pro-team@latest/actions): Ready for GitHub actions CI.
 
-* [Nox](https://nox.thea.codes/en/stable/): Automated testing for python 3.6+
-
-* [Invoke](http://www.pyinvoke.org): Easy project automation
+* [Nox](https://nox.thea.codes/en/stable/): Easy automation & testing for python 3.6+
 
 * [Sphinx](https://www.sphinx-doc.org/en/master/): Production ready docs with Sphinx and readthedocs.
 
-* [Versioneer](https://github.com/python-versioneer/python-versioneer): Pre-configured version bumping, all you need to do is create a new tag.
+* [Versioneer](https://github.com/python-versioneer/python-versioneer): Pre-configured version bumping, all you need to do is create a new git tag.
 
 * [GitHub cli](https://cli.github.com): Option to use the new gh cli to create a GitHub repo for you after project creation. (You'll need to have this already set up)
 

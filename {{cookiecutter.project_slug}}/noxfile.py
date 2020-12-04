@@ -10,14 +10,14 @@ def test(session):
     """
     Runs the test suite against all supported python versions.
     """
-    session.install(".")
     session.install("pytest", "pytest-cov")
+    session.install(".")
     # Posargs allows passing of tests directly
     tests = session.posargs or ["tests/"]
     session.run("pytest", "--cov={{cookiecutter.project_slug}}", *tests)
 
 
-@nox.session(python="3.9")
+@nox.session()
 def style(session):
     """
     Formats project with black and isort, then runs flake8 and mypy linting.
@@ -31,14 +31,20 @@ def style(session):
     session.run("mypy", ".")
 
 
-@nox.session(python="3.9")
+@nox.session()
 def docs(session):
     """
-    Build the documentation.
+    Builds the project documentation.
+
+    By default just builds (fail on sphinx warning).
+
+    If '-- serve' is passed, will use sphinx-autobuild and open a browser.
     """
     build_dir = str(PROJECT_ROOT.joinpath("docs/_build/html"))
     source_dir = str(PROJECT_ROOT.joinpath("docs/"))
-    sphinx_args = ["-b", "html", source_dir, build_dir]
+
+    # Key: -b = build, html = Build type, -W = Fail on warning
+    sphinx_args = ["-b", "html", "-W", source_dir, build_dir]
 
     # Clean any pre-built docs
     session.run("rm", "-rf", build_dir, external=True)
@@ -49,4 +55,11 @@ def docs(session):
         "recommonmark",
     )
     session.install(".")
-    session.run("sphinx-build", *sphinx_args)
+
+    if "serve" in session.posargs:
+        sphinx_cmd = "sphinx-autobuild"
+        sphinx_args.insert(0, "--open-browser")
+    else:
+        sphinx_cmd = "sphinx-build"
+
+    session.run(sphinx_cmd, *sphinx_args)
