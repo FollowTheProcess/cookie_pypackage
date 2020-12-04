@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [3.6, 3.7, 3.8, 3.9]
+        python-version: [3.7, 3.8, 3.9]
 
     steps:
       - uses: actions/checkout@v2
@@ -19,8 +19,8 @@ jobs:
         run: |
           python3 -m pip install --upgrade pip setuptools wheel
           pip install -r requirements.txt
-          pip install pytest pytest-cov
+          pip install nox
           pip install .
-      - name: Test with pytest
+      - name: Run Tests
         run: |
-          pytest --cov={{cookiecutter.project_slug}} tests/
+          nox --non-interactive --session "test-${{ matrix.python-version }}"
