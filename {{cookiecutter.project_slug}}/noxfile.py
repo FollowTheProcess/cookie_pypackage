@@ -56,6 +56,7 @@ def docs(session):
     Builds the project documentation.
     """
     session.install("--upgrade", "pip", "setuptools", "wheel")
+    session.install("mkdocs", "mkdocs-material", "mkdocstrings")
     session.install(".")
 
     session.run("mkdocs", "build", "--clean")
