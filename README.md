@@ -15,13 +15,15 @@ I created it from scratch, taking inspiration from other templates mostly as a l
 
 * Change CI provider from Travis to GitHub actions
 
+* Change docs from Sphinx to MkDocs
+
 ## Features
 
 * [GitHub Actions](https://docs.github.com/en/free-pro-team@latest/actions): Ready for GitHub actions CI.
 
 * [Nox](https://nox.thea.codes/en/stable/): Easy automation & testing for python 3.6+
 
-* [Sphinx](https://www.sphinx-doc.org/en/master/): Production ready docs with Sphinx and readthedocs.
+* [MkDocs](https://www.mkdocs.org/#building-the-site): Production ready docs with MkDocs and GitHub Pages.
 
 * [Versioneer](https://github.com/python-versioneer/python-versioneer): Pre-configured version bumping, all you need to do is create a new git tag.
 

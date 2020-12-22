@@ -1,0 +1,33 @@
+site_name: {{cookiecutter.project_name}}
+repo_url: {{cookiecutter.project_github_url}}
+site_url: https://{{cookiecutter.author_github_username}}.github.io/{{cookiecutter.project_slug}}/
+site_description: {{cookiecutter.project_short_description}}
+site_author: {{cookiecutter.author_name}}
+use_directory_urls: false
+nav:
+  - Home:
+      - Index: index.md
+plugins:
+  - mkdocstrings:
+      watch:
+        - {{cookiecutter.project_slug}}
+  - search
+theme:
+  name: material
+  font:
+    text: Ubuntu
+    code: Ubuntu Mono
+  feature:
+    tabs: true
+  palette:
+    primary: indigo
+    accent: blue
+markdown_extensions:
+  - codehilite
+  - pymdownx.inlinehilite
+  - pymdownx.details
+  - pymdownx.tabbed
+  - pymdownx.highlight:
+      use_pygments: true
+  - toc:
+      permalink: true
