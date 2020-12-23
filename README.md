@@ -29,7 +29,7 @@ I created it from scratch, taking inspiration from other templates mostly as a l
 
 * [GitHub cli](https://cli.github.com): Option to use the new gh cli to create a GitHub repo for you after project creation. (You'll need to have this already set up)
 
-* Auto-release to [PyPI](https://pypi.org) when you create a new release on GitHub and the tests pass.
+* Auto-release to [PyPI](https://pypi.org) when you push a new tag and the tests pass.
 
 ## Usage
 
@@ -77,6 +77,12 @@ versioneer install
 
 * Add repo to Pyupio
 
-* If you wish to deploy packages to PyPI using the `release` workflow, you will also need to add your PyPI username and password to the repository secrets as `PYPI_USERNAME` and `PYPI_PASSWORD` respectively.
+* If you wish to deploy packages to PyPI using the `release` workflow, you will also need to add your PyPI password to the repository secrets as `PYPI_PASSWORD`.
 
-* That should be it, from now on everything will be handled automatically. All you need to do is write code, tests and docs! Your code will be style checked, your tests will be run and your docs will be automatically deployed to GitHub Pages if the build is a success.
+* That should be it, from now on everything will be handled automatically. All you need to do is write code, tests and docs! Your code will be style checked, your tests will be run etc.
+
+* I've left the deploying of docs to github pages manual. The docs will be built automatically and error if anything is wrong but they probably don't need deploying every time. When you're ready to deploy the docs to GitHub pages just run...
+
+``` shell
+mkdocs gh-deploy
+```
