@@ -1,4 +1,2 @@
 include LICENSE
 recursive-include {{cookiecutter.project_slug}}
-include {{cookiecutter.project_slug}}/_version.py
-include versioneer.py
