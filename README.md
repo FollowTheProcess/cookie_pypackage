@@ -72,7 +72,7 @@ python3 -m pip install -e .[dev] # Tells pip to install all development dependen
 
 * Add repo to Pyupio
 
-* If you wish to deploy packages to PyPI using the `release` workflow, you will also need to add your PyPI password to the repository secrets as `PYPI_PASSWORD`.
+* If you wish to deploy packages to PyPI using the `CI` workflow. You will need to create a [PyPI API Token](https://pypi.org/help/#apitoken) and save it in your repository secrets under the name `PYPI_API_TOKEN`.
 
 * That should be it, from now on everything will be handled automatically. All you need to do is write code, tests and docs! Your code will be style checked, your tests will be run etc.
 
@@ -89,3 +89,5 @@ bump2version patch # Possible: patch, minor, major
 git push
 git push --tags
 ```
+
+* Don't worry, your package will only be uploaded to PyPI if all other CI actions pass (testing, linting, building docs etc.)
