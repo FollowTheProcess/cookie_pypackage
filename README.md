@@ -17,6 +17,8 @@ I created it from scratch, taking inspiration from other templates mostly as a l
 
 * Change docs from Sphinx to MkDocs
 
+* Made compliant with PEP 517/518
+
 ## Features
 
 * [GitHub Actions](https://docs.github.com/en/free-pro-team@latest/actions): Ready for GitHub actions CI.
@@ -25,11 +27,11 @@ I created it from scratch, taking inspiration from other templates mostly as a l
 
 * [MkDocs](https://www.mkdocs.org/#building-the-site): Production ready docs with MkDocs and GitHub Pages.
 
-* [Versioneer](https://github.com/python-versioneer/python-versioneer): Pre-configured version bumping, all you need to do is create a new git tag.
+* [Bump2Version](https://pypi.org/project/bump2version/): Pre-configured version bumping, all you need to do is run a command
 
 * [GitHub cli](https://cli.github.com): Option to use the new gh cli to create a GitHub repo for you after project creation. (You'll need to have this already set up)
 
-* Auto-release to [PyPI](https://pypi.org) when you push a new tag and the tests pass.
+* Auto-release to [PyPI](https://pypi.org) when you push a new version and the tests pass.
 
 ## Usage
 
@@ -61,16 +63,9 @@ cd <name_of_your_project>
 
 python3 -m venv venv
 
-# Activate the venv and install dependencies
+# Activate the venv, install dependencies and project root
 source venv/bin/activate
-python3 -m pip install --upgrade pip setuptools wheel
-pip install -r requirements_dev.txt
-```
-
-* Install versioneer...
-
-``` shell
-versioneer install
+python3 -m pip install -e .[dev] # Tells pip to install all development dependencies too
 ```
 
 * Make a first commit to set up the github repo (if not used the gh cli)
@@ -85,4 +80,12 @@ versioneer install
 
 ``` shell
 mkdocs gh-deploy
+```
+
+* To create a new version and release to PyPI...
+
+``` shell
+bump2version patch # Possible: patch, minor, major
+git push
+git push --tags
 ```

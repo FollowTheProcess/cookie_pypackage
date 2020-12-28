@@ -1,60 +1,14 @@
-from pathlib import Path
+#!/usr/bin/env python3
 
-from setuptools import find_packages, setup
+"""
+Setuptools shim to allow editable installs.
 
-import versioneer
+pip install -e .
+or
+python setup.py develop
+"""
 
-ROOT = Path(__file__).parent.resolve()
+import setuptools
 
-
-def read(path: str, encoding: str = "utf-8") -> str:
-    """
-    Utility function to read the content of files to
-    be passed to setup arguments.
-    """
-
-    file_path = ROOT.joinpath(path)
-    with open(file_path, encoding=encoding) as fp:
-        return fp.read()
-
-
-def get_install_requirements(path: str) -> list:
-    """
-    Utility function to read a requirements.txt type file.
-    """
-    content = read(path)
-    return [req for req in content.split("\n") if req != "" and not req.startswith("#")]
-
-
-setup(
-    name="{{cookiecutter.project_slug}}",
-    version=versioneer.get_version(),
-    cmdclass=versioneer.get_cmdclass(),
-    description="{{cookiecutter.project_short_description}}",
-    long_description=read("README.md"),
-    long_description_content_type="text/markdown",
-    url="{{cookiecutter.project_github_url}}",
-    author="{{cookiecutter.author_name}}",
-    author_email="{{cookiecutter.author_email}}",
-    classifiers=[
-        # Update this before release
-        "Development Status :: 3 - Alpha",
-        "Natural Language :: English",
-        "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.6",
-        "Programming Language :: Python :: 3.7",
-        "Programming Language :: Python :: 3.8",
-        "Programming Language :: Python :: 3.9",
-    ],
-    packages=find_packages(exclude=["tests", "docs"]),
-    python_requires=">=3.6",
-    install_requires=get_install_requirements("requirements.txt"),
-    extras_require={"dev": get_install_requirements("requirements_dev.txt")},
-    license="{{cookiecutter.open_source_license}}",
-    test_suite="tests",
-    zip_safe=False,
-    project_urls={
-        "Documentation": "https://{{cookiecutter.author_github_username}}.github.io/{{cookiecutter.project_slug}}/",
-        "Source Code": "{{cookiecutter.project_github_url}}",
-    },
-)
+if __name__ == "__main__":
+    setuptools.setup()
