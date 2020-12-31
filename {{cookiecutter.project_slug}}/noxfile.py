@@ -30,7 +30,7 @@ def coverage(session):
     Test coverage analysis.
     """
     session.install("--upgrade", "pip", "setuptools", "wheel")
-    session.install(".[test]")
+    session.install(".[cov]")
 
     session.run("coverage", "report", "--fail-under=96", "--show-missing")
     session.run("coverage", "erase")
