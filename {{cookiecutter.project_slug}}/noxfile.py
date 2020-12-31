@@ -58,3 +58,6 @@ def docs(session):
     session.install(".[docs]")
 
     session.run("mkdocs", "build", "--clean")
+
+    if "serve" in session.posargs:
+        session.run("mkdocs", "serve")
