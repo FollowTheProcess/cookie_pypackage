@@ -24,10 +24,11 @@ theme:
     accent: blue
 markdown_extensions:
   - codehilite
-  - pymdownx.inlinehilite
-  - pymdownx.details
-  - pymdownx.tabbed
   - pymdownx.highlight:
       use_pygments: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.tabbed
   - toc:
       permalink: true
