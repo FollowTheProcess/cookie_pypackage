@@ -8,9 +8,6 @@ import nox
 
 PROJECT_ROOT = Path(__file__).parent.resolve()
 
-# Nox defaults to virtualenv which is now deprecated
-nox.options.default_venv_backend = "venv"
-
 
 @nox.session(python=["3.6", "3.7", "3.8", "3.9"])
 def test(session):
@@ -53,11 +50,15 @@ def lint(session):
 def docs(session):
     """
     Builds the project documentation.
+
+    You can also serve the docs by running:
+
+    nox -s docs -- serve
     """
     session.install("--upgrade", "pip", "setuptools", "wheel")
     session.install(".[docs]")
 
-    session.run("mkdocs", "build", "--clean")
-
     if "serve" in session.posargs:
         session.run("mkdocs", "serve")
+    else:
+        session.run("mkdocs", "build", "--clean")
