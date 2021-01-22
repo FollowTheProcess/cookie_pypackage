@@ -8,6 +8,7 @@
 # Already at the root of the generated project, no need to cd anywhere
 
 git init
+git branch -M main
 git add -A
 git commit -m "Initial Commit (Automated at Project Creation)"
 
