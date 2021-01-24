@@ -13,4 +13,6 @@ git commit -m "Initial Commit (Automated at Project Creation)"
 
 gh repo create {{cookiecutter.project_slug}} --confirm --description "{{cookiecutter.project_short_description}}"
 
+git push --set-upstream origin main
+
 {% endif %}
